@@ -16,6 +16,7 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
+    
     <!--  -->
     <div id="navbarMenu" class="navbar-menu" :class="{'is-active' :displayMenu}">
         <div class="navbar-start">
