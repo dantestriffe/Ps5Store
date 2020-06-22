@@ -26,7 +26,7 @@
           ¿Buscas una aventura increíble para jugar hoy mismo? Estos fantásticos juegos para la consola PS4 ya están disponibles. Haz clic en un juego para obtener más información y, luego, descárgalo de forma digital o solicita que te lo enviemos directamente a tu domicilio.
         </h1>
 
-      
+        <h1 class="subtitle is-size-4" style="color: cyan;"> Busca tu Juego Favorito </h1>      
           <div class="is-pulled-left">
             <div class="field">
               <p class="control has-icons-left">
@@ -43,11 +43,11 @@
 
     <div class="container">
     <div class="columns is-multiline" style="margin-top: 4em;">     
-      <div class="column is-3" v-for="p in computedProductList" :key="p.id">
+      <div class="column is-4" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height cardbg">
           <div class="image-card">
-            <div class="image is-1by1">
+            <div class="image is-4by3">
               <img  :src="p.data.picture">
             </div>
           </div>
