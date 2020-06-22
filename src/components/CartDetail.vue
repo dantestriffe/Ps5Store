@@ -1,10 +1,10 @@
 <template>
   <div class="modal" v-bind:class="{'is-active':  showModal}">
-    <div class="modal-background"></div>
-    <div class="modal-card">
+    <div class="modal-background "></div>
+    <div class="modal-card ">
       <header class="modal-card-head">
-        <p class="modal-card-title">Estos son tus productos</p>
-        <button class="delete" aria-label="close" @click="showModal=false"></button>
+        <p class="modal-card-title">Estos son los poductos que añadiste</p>
+        <button class="delete is-large" aria-label="close" @click="showModal=false"></button>
       </header>
       <section class="modal-card-body">
         <div>
@@ -15,22 +15,24 @@
                   <div class="media">
                     <!-- img -->
                     <div class="media-left">
-                      <figure class="image is-48x48">
-                        <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+                      <figure class="image is-128x128">
+                        <img :src= p.data.picture alt="Placeholder image">
                       </figure>
                     </div>
                     <!-- product -->
                     <div class="media-content">
-                      <p class="title is-5">{{ p.name }}</p>
-                      <p class="subtitle is-6">$ {{ p.price * p.qty }}</p>
+                      <p class="title is-5">{{ p.data.name }}</p>
+                      <p class="subtitle is-4">$ {{ p.data.price * p.qty }}</p>
                     </div>
                     <p>
-                      {{ p.qty }} x $ {{ p.price }} &nbsp;
+                      {{ p.qty }} x $ {{ p.data.price }} &nbsp;
                     </p>
-                    <button class="button is-danger is-small" @click="$store.dispatch('removeFromCart', p.id)">
-                      <span class="icon is-small is-left">
+                    <button class="button is-danger is-medium" @click="$store.dispatch('removeFromCart', p.id)">
+                      <span class="icon is-medium is-left">
                         <i class="mdi mdi-18px mdi-delete"></i>
+                        
                       </span>
+                      <p>Quitar</p>
                     </button>
                   </div>
                 </div>
@@ -43,12 +45,13 @@
         <div>
           <div>
             <div class="is-pulled-right">
-              <p class="title is-4">
+              <p class="title is-2">
                 Total: $ {{ $store.getters.shoppingCart.total }}
               </p>
             </div>
             <div>
-              <button class="button is-warning" @click="$store.dispatch('clearCart')">
+              <button class="button is-medium is-danger" @click="$store.dispatch('clearCart')">
+                <i class="mdi mdi-18px mdi-delete"></i>
                 Vaciar Carrito
               </button>
             </div>
@@ -56,9 +59,9 @@
         </div>
         <!-- Content ... -->
       </section>
-      <footer class="modal-card-foot">
-        <button class="button is-primary" @click="showModal=false">Volver</button>
-        <button class="button is-success is-pulled-right">Finalizar Compra</button>
+      <footer class="modal-card-foot ">
+        <button class="button is-large is-black" @click="showModal=false">Volver</button>
+        <button class="button is-large is-link ">Finalizar Compra</button>
       </footer>
     </div>
   </div>
@@ -86,5 +89,6 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
 
 </style>

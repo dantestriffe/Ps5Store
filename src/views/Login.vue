@@ -1,9 +1,10 @@
 <template>
-  <div>
-    <div class="columns">
-      <div class="column is-one-third"></div>
-      <div class="column is-one-third">
-        <div class="login-container card">
+  <div class="bg_l">
+    <div class="columns bg_log">
+      <div class="column is-2"></div>
+      <div class="column is-4 mt">
+        <div class="login-container box card">
+          <h1 class="title tit">Inicia Sesión</h1>
           <form>
             <!-- Field email -->
             <div class="field">
@@ -14,11 +15,11 @@
               </span>
             </div>
             <div class="field">
-              <label class="label">Email</label>
+              <label class="label is-medium">Email</label>
               <div class="control has-icons-left has-icons-right">
                 <input type="email" name="email" id="email" placeholder="Email"
                 v-model="credentials.email"
-                class="input">
+                class="input is-large">
                 <span class="icon is-small is-left">
                   <i class="mdi mdi-email"></i>
                 </span>
@@ -26,25 +27,29 @@
             </div>
             <!-- Field password -->
             <div class="field">
-              <label class="label">Contraseña</label>
+              <label class="label is-medium">Contraseña</label>
               <div class="control has-icons-left has-icons-right">
-                <input type="password" name="password" id="password" placeholder="*******"
+                <input  type="password" name="password" id="password" placeholder="*******"
                 v-model="credentials.password"
-                class="input">
-                <span class="icon is-small is-left">
+                class="input is-large">
+                <span class="icon is-medium is-left">
                   <i class="mdi mdi-key"></i>
                 </span>
               </div>
             </div>
             <!-- field submit -->
             <div class="field">
-              <button class="button is-primary is-pulled-right" @click="login">Acceder</button>
+              <button class="button is-black is-large is-fullwidth" @click="login">Acceder</button>
             </div>
             <div class="is-clearfix"></div>
           </form>
         </div>
       </div>
-      <div class="column is-one-third"></div>
+      <div class="column is-4">
+        <h1 class="title is-2 tit2" style="color: white; font-weight: 200">Inicia Sesión y descubre el <span style="font-weight: strong"> Futuro del gaming</span></h1>
+        <h1 class="subtitle is-4" style="color: white; font-weight: 200">Estás a un paso de la nueva generación</h1>
+      </div>
+      <div class=""></div>
     </div>
   </div>
 </template>
@@ -96,10 +101,38 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-.login-container {
-  padding: 2rem 1rem 0.5rem 1rem;
-    margin-top: 70px;
-    margin-bottom: auto;
 
+
+.mt{
+  margin-top: 9rem;
+}
+.bg_log{
+  background-image: url("../assets/bg_logim-01.jpg");
+  background-position: right;
+  background-repeat: no-repeat;
+  background-size: cover;
+  min-height: 980px;
+
+}
+
+.tit{
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.tit2{
+  margin-top: 300px;
+  margin-bottom: 30px;
+}
+
+.button{
+  margin-top: 40px;
+}
+
+.login-container {
+  padding-top: 4rem;
+    min-height: 550px;
+    max-width: 80%;
+  
 }
 </style>

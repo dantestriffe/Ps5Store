@@ -6,17 +6,15 @@
           <img class="ima" src="../assets/logo3-01.png" alt="">
           <div style="margin-bottom: 2em;">
             <h1 class="title has-text-weight-bold is-size-1">
-             Descubre lo último en Juegos para PS5
+              Descubre lo último en Juegos para PS5
             </h1>
             <h4 class="subtitle is-size-3 has-text-weight-light ">
-          El <span class="has-text-weight-bold">FUTURO</span> de los videojuegos ha llegado
+              El <span class="has-text-weight-bold">FUTURO</span> de los videojuegos ha llegado
             </h4>
-          </div>
-         
+          </div>         
         </div>
       </div>
     </section>
-
       <div class="container">
         <img class="ofer" src="../assets/ofer.jpg" alt="">
         <h1 class="title is-size-2" style="margin-top: 2em; color: white" >
@@ -25,7 +23,6 @@
         <h1 class="subtitle is-size-4" style="color: white; margin-top: 1em">
           ¿Buscas una aventura increíble para jugar hoy mismo? Estos fantásticos juegos para la consola PS4 ya están disponibles. Haz clic en un juego para obtener más información y, luego, descárgalo de forma digital o solicita que te lo enviemos directamente a tu domicilio.
         </h1>
-
         <h1 class="subtitle is-size-4" style="color: cyan;"> Busca tu Juego Favorito </h1>      
           <div class="is-pulled-left">
             <div class="field">
@@ -40,7 +37,6 @@
           </div>
           <br>
         </div>
-
     <div class="container">
     <div class="columns is-multiline" style="margin-top: 4em;">     
       <div class="column is-4" v-for="p in computedProductList" :key="p.id">
@@ -60,7 +56,7 @@
                 {{ p.qty }}
                 <button @click="incrQty(p.id)"><i class="mdi mdi-plus is-black"></i></button>
               </div>
-              <p class="title">$ {{ parseInt(p.data.price) }}</p>
+              <p class="title">$ {{ p.data.price * p.qty }}</p>
               <button @click="addToCart(p)" class="button is-large is-fullwidth is-black is-rounded" style="margin-top: 2rem">
                 <i class="mdi mdi-cart">Enviar al carrito</i>
               </button>
@@ -71,7 +67,6 @@
       </div> <!-- End Item  -->
     </div>
     <!--  -->
-  
       </div>
       </div>
 
@@ -118,18 +113,7 @@ export default {
   },
   watch: {},
   created() {
-
     this.$store.dispatch('getProducts')
-    // Pull products from Product service
-   /* Products.all().then(response => {
-      response.data.forEach(p => {
-        p['qty'] = 1
-        this.products.push(p)
-      })
-    })
-    .catch(error => {
-      alert(error.message)
-    })*/
   },
   mounted() {}
 }
@@ -140,26 +124,20 @@ export default {
 .bgpage{
   background: rgb(8, 8, 8);
 }
-
 .ofer{
   margin-top: 6rem;
   width: 100%;
 }
-
 .ima{
   width: 22%;
 }
-
 .col{
   margin-left: 3rem;
   margin-right: 3rem;
 }
-
 .cardbg{
   background-color: white;
- 
 }
-
 .x{
   background-image: url("../assets/logo5-01.png");
   background-size: contain;
@@ -169,9 +147,6 @@ export default {
 .hero.is-dark{
   background-color: black;
 }
-
-
-
 .counter {
   display: inline-block;
   button {

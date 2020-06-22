@@ -13,7 +13,7 @@ function getFromStorage(key) {
 function getCartTotal(productsList) {
   let price = 0.0
   productsList.forEach(p => {
-    price += p.price * p.qty
+    price += p.data.price * p.qty
   })
   return price
 }
@@ -23,7 +23,6 @@ function newCart() {
     total: 0.0,
   }
 }
-
 export default new Vuex.Store({
   state: {
     // User
@@ -33,14 +32,19 @@ export default new Vuex.Store({
     showCart: false,
     products: [],
     loading: false,
-    edit: false
+    edit: false,
+    charge: false
   },
   mutations: {
   LOADING_PRODUCTS(state){
     state.loading = !state.loading
   },
   GET_PRODUCTS(state, products){
-    state.products = products
+    state.products =[]
+    products.forEach((games) =>{
+      games['qty'] = 1
+      state.products.push(games)
+    })
     state.loading = false
   },
     // User
@@ -86,6 +90,12 @@ export default new Vuex.Store({
     },
     UPDATE_EDIT(state){
       state.edit = !state.edit
+    },
+    CHARGE_SHOW(state){
+      state.charge = true
+    },
+    CHARGE_HIDE(state){
+      state.charge = false
     }
   },
   actions: {
@@ -133,24 +143,21 @@ export default new Vuex.Store({
           resolve(true)
         } catch(e) { reject(e) }
       })
-    },
-   
+    },   
     getProducts({commit}){
-
+      commit('CHARGE_SHOW')
       commit('LOADING_PRODUCTS')
-
       axios.get (`https://us-central1-tddg3-72011.cloudfunctions.net/products/Products`, {
         headers:{
           "Content-type": "text/plain"
         }
       }).then((accept) =>{
-
       let data = accept.data;
-
       commit('GET_PRODUCTS', data)
+      }).finally(() =>{
+        commit('CHARGE_HIDE')
       })
     }
-    
   },
   getters: {
     // User
