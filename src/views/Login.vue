@@ -104,7 +104,7 @@ export default {
 
 
 .mt{
-  margin-top: 9rem;
+  margin-top: 12rem;
 }
 .bg_log{
   background-image: url("../assets/bg_logim-01.jpg");

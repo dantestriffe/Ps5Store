@@ -11,13 +11,14 @@
             <h4 class="subtitle is-size-3 has-text-weight-light ">
               El <span class="has-text-weight-bold">FUTURO</span> de los videojuegos ha llegado
             </h4>
+            <button class="button is-large is-light "><a href="#anch">Descubre los mejores juegos</a></button>
           </div>         
         </div>
       </div>
     </section>
       <div class="container">
         <img class="ofer" src="../assets/ofer.jpg" alt="">
-        <h1 class="title is-size-2" style="margin-top: 2em; color: white" >
+        <h1 id="anch" class="title is-size-2" style="margin-top: 2em; color: white" >
           Nuevos juegos destacados para PlayStation®5
         </h1>
         <h1 class="subtitle is-size-4" style="color: white; margin-top: 1em">
@@ -121,8 +122,13 @@ export default {
 
 <style lang="scss" scoped>
 
+a{
+  color: #202020;
+}
+
 .bgpage{
   background: rgb(8, 8, 8);
+  padding-bottom: 10rem;
 }
 .ofer{
   margin-top: 6rem;
