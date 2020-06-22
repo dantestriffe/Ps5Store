@@ -1,28 +1,29 @@
 <template>
-    <div>
-        <div class="container content box">
-       <h1 class="title">Agregar Productos</h1>
-         <div class="field">    
-            <div class="control">
+    <div class="bg_add">
+        <div class="container box">
+       <h1 class="title titled">Agregar Productos</h1>
+         <div class="field columns">    
+            <div class="control column is-3">
                <label class="label">Ingrese Nombre del Producto</label>
-               <input type="text" class="input is-medium" v-model="name" placeholder="Ingrese Producto"><br>
+               <input type="text" class="input is-large" v-model="name" placeholder="Ingrese Producto"><br>
                 </div>
-              <div class="control">
+              <div class="control column is-2">
                  <label class="label">Ingrese el Precio $</label>
-                <input type='number'  class="input is-medium" v-model="price" placeholder='ingrese el valor $'><br>
+                <input type='number'  class="input is-large" v-model="price" placeholder='ingrese el valor $'><br>
              </div>
-             <div class="control">
+             <div class="control column is-4">
                 <label class="label">Adjunte el url de la Imagen del Producto</label>
-                <input type="text"  class="input is-medium" v-model="picture" placeholder="Ingrese foto del Producto"><br> 
+                <input type="text"  class="input is-large" v-model="picture" placeholder="Ingrese foto del Producto"><br> 
              </div>  
-             <div class="control"> 
-                <button class="button is-primary" @click="createProducts"> Añadir</button>
-                <button class="button is-primary" v-if="edit" @click="updateProduct(id)">Actualizar</button>
+             <div class="controls"> 
+                <button class="button is-link is-medium" @click="createProducts"><i class="mdi mdi-plus-circle-outline"> Añadir </i></button>
+                
+                <button class="button mrg is-medium is-black" v-if="edit" @click="updateProduct(id)"><i class="mdi mdi-refresh"> Actualizar </i></button>
              </div>    
           </div>
         </div>
 
-        <table class="table table-striped">
+        <table class="table table-striped container box">
             <thead>
                 <tr>
                     <th>id</th>
@@ -85,7 +86,9 @@ export default {
             });
          },
         deleteProduct(id){    
-            let confirmation = confirm(`Vas a eliminar el producto con el id = ${id}`)       
+            axios.get(`https://us-central1-tddg3-72011.cloudfunctions.net/products/Product/${id}`).then((response)=>{
+            let names = response.data.name           
+            let confirmation = confirm(`Vas a eliminar el Producto ${names}`)       
             if(confirmation){
                 axios.delete(`https://us-central1-tddg3-72011.cloudfunctions.net/products/Product/${id}`,
                  {headers:{'content-type':'application/json'}}) 
@@ -94,12 +97,12 @@ export default {
                    this.$store.dispatch('getProducts')  
                  })
             }
+            })
         },
         editProduct(id){
            this.updateEdit()
            this.findProduct(id)    
         },
-        //solo es para apretar el botón
         findProduct(id){
              axios.get(`https://us-central1-tddg3-72011.cloudfunctions.net/products/Product/${id}`,
                  {headers:{'content-type':'application/json'}}) 
@@ -117,7 +120,7 @@ export default {
                 price: this.price
             }
             console.log (go)
-            axios.put(`https://us-central1-tddg3-72011.cloudfunctions.net/products/Product/${id}`,go,
+            axios.put(`https://us-central1-tddg3-72011.cloudfunctions.net/products/Product/${id}`, go,
             {headers:{'content-type':'application/json'}})
             .then(() =>{
                 this.name = ''
@@ -142,17 +145,24 @@ export default {
 }
 </script>
 <style scoped>
-.conta{
-    margin-top: 5em;
+
+
+.mrg{
+    margin-left: 20px;
 }
-.container{
-	min-width:320px;
-	width:64%;
-	max-width:40em;
-	margin:10vh auto;
-    background-color: white;
-    
+
+.controls{
+    margin-top: 48px;
 }
+
+.titled{
+    text-align: center;
+}
+.bg_add{
+    padding-top: 100px;
+    background: black;
+}
+
 input{
     margin-bottom: 1em;
 }

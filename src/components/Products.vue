@@ -39,7 +39,7 @@
         </div>
     <div class="container">
     <div class="columns is-multiline" style="margin-top: 4em;">     
-      <div class="column is-4" v-for="p in computedProductList" :key="p.id">
+      <div class="column is-3" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height cardbg">
           <div class="image-card">
@@ -51,12 +51,12 @@
             <div class="content">
               <h3 class="title">{{ p.data.name }}</h3>
               <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-              <div class="counter">
+              <div class="counter title" style="display: flex; justify-content: space-around">
                 <button @click="decrQty(p.id)" :disabled="p.qty === 1"><i class="mdi mdi-minus"></i></button>
                 {{ p.qty }}
                 <button @click="incrQty(p.id)"><i class="mdi mdi-plus is-black"></i></button>
-              </div>
               <p class="title">$ {{ p.data.price * p.qty }}</p>
+              </div>
               <button @click="addToCart(p)" class="button is-large is-fullwidth is-black is-rounded" style="margin-top: 2rem">
                 <i class="mdi mdi-cart">Enviar al carrito</i>
               </button>
@@ -148,12 +148,14 @@ export default {
   background-color: black;
 }
 .counter {
-  display: inline-block;
+
   button {
+    background: rgb(34, 34, 34);
+    color: white;
+    border-radius: 15%;
     text-align: center;
-    border-radius: 50%;
-    height: 2rem;
-    width: 2rem;
+    height: 3rem;
+    width: 3rem;
     cursor: pointer;
   }
 }
