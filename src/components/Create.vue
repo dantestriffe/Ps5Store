@@ -2,6 +2,10 @@
     <div class="bg_add">
         <div class="container box">
        <h1 class="title titled">Agregar Productos</h1>
+        <span v-if="formHasErrors" class="has-text-danger">
+                <i class="mdi mdi-alert"></i>
+               Por favor, complete todos los campos
+              </span>
          <div class="field columns">    
             <div class="control column is-3">
                <label class="label">Ingrese Nombre del Producto</label>
@@ -15,14 +19,13 @@
                 <label class="label">Adjunte el url de la Imagen del Producto</label>
                 <input type="text"  class="input is-large" v-model="picture" placeholder="Ingrese foto del Producto"><br> 
              </div>  
+            
              <div class="controls"> 
                 <button class="button is-link is-medium" @click="createProducts"><i class="mdi mdi-plus-circle-outline"> Añadir </i></button>
-                
                 <button class="button mrg is-medium is-black" v-if="edit" @click="updateProduct(id)"><i class="mdi mdi-refresh"> Actualizar </i></button>
              </div>    
           </div>
         </div>
-
         <table class="table table-striped container box">
             <thead>
                 <tr>
@@ -50,8 +53,7 @@
               </td>
               </tr>
             </tbody>   
-        </table>
-  
+        </table>  
  </div>    
 </template>
 <script>
@@ -64,17 +66,29 @@ export default {
             name:'',
             picture: '',
             price: '',
-            id: undefined
+            id: undefined,
+            formHasErrors: false
         }
     },
     methods:{
          ...mapActions(['updateEdit']),
+         validacion(){
+        if (this.name && this.price && this.picture) {
+          this.formHasErrors = false
+        return true;
+          }
+          this.formHasErrors = [];
+          if (!this.name && !this.price && !this.picture) {
+            this.formHasErrors
+          }
+        },
         createProducts(){
             let go = {
                 name: this.name,
                 picture: this.picture,
                 price: this.price
             }
+            if(this.validacion()){
             axios.post('https://us-central1-tddg3-72011.cloudfunctions.net/products/Product', go,
             {headers:{'content-type':'application/json'}})
             .then((response) =>{
@@ -84,6 +98,7 @@ export default {
             .catch((error) =>{
                 console.log(error);
             });
+            }
          },
         deleteProduct(id){    
             axios.get(`https://us-central1-tddg3-72011.cloudfunctions.net/products/Product/${id}`).then((response)=>{

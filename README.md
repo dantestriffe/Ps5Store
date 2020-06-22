@@ -1,12 +1,12 @@
 # Playstation 5 Store
-Playstation 5 store es una pagina de venta de juegos de próxima generación para la consola de playstation 5 
+    Playstation 5 store es una pagina inspirada en la compañía Sony y se basa en la venta de juegos de próxima generación para la consola de playstation 5 donde tendrá un buscador de juegos, un administrador para agregar o quitar productos vinculado directamente con la base de datos de Firebase
 
 >## Project basic requirements
-```
-Asegurate de tener git-bash o algun terminal que te permita trabajar
-y tu editor de codigo favorito
 
-```
+- Asegurate de tener git-bash o algun terminal que te permita trabajar
+- Tu editor de codigo favorito
+- y una cuenta en Firebase
+
 
 >## Project setup
 ```

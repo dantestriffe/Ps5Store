@@ -1,6 +1,6 @@
 describe('Products page', () => {
     it('Filters products list', () =>{
-        cy.visit('http://localhost:8080')
+        cy.visit('/')
         cy.get('.column.is-4').should('have.length', 14)
 
         //Si busco Casa me debe traer la cantidad de column correspondiente a esa propiedad
@@ -12,8 +12,8 @@ describe('Products page', () => {
         cy.get('.column.is-4').should('have.length', 0)
     })
 
-    it('Añadi al carritos', () =>{
-        cy.visit('http://localhost:8080')
+    it('Añadir productos al carrito', () =>{
+        cy.visit('/')
         cy.get('.navbar-burger').click()
         cy.get('input').clear()
         cy.get('.card button.is-pulled-right.is-warning').first().click()
@@ -22,7 +22,7 @@ describe('Products page', () => {
     })
     
     it('Eliminar del carrito', () =>{
-        cy.visit('http://localhost:8080')
+        cy.visit('/')
         cy.get('.navbar-burger').click()
         cy.get('.card button.is-pulled-right.is-warning').first().click()
         cy.get('.navbar-burger').click()
