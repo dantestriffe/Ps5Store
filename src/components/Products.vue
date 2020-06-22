@@ -122,6 +122,8 @@ export default {
 
 <style lang="scss" scoped>
 
+
+
 a{
   color: #202020;
 }

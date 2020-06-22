@@ -34,6 +34,10 @@ export default {
 
 <style >
 
+html{
+  scroll-behavior: smooth;
+}
+
 .animated{
   width: 50px;
   height: 50px;
