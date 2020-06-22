@@ -16,7 +16,7 @@
         <span aria-hidden="true"></span>
       </a>
     </div>
-    
+
     <!--  -->
     <div id="navbarMenu" class="navbar-menu" :class="{'is-active' :displayMenu}">
         <div class="navbar-start">
@@ -32,7 +32,7 @@
             <span class="icon">
               <i class="mdi mdi-32px mdi-cart"></i>
               <span
-              class="tag is-warning"
+              class="tag is-danger"
               v-if="$store.getters.shoppingCart.list.length > 0">
                 {{ $store.getters.shoppingCart.list.length }}
               </span>
@@ -123,5 +123,11 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+
+.navbar{
+  position: fixed;
+  width: 100%;
+  background: black;
+}
 
 </style>

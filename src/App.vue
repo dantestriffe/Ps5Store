@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <navbar :brand="'My Store'"/>
+    <navbar :brand="'Playstation 5 Store'"/>
     <router-view/>
   </div>
 </template>
