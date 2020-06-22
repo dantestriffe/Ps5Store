@@ -40,7 +40,7 @@
         </div>
     <div class="container">
     <div class="columns is-multiline" style="margin-top: 4em;">     
-      <div class="column is-3" v-for="p in computedProductList" :key="p.id">
+      <div class="column is-4" v-for="p in computedProductList" :key="p.id">
         <!-- Item -->
         <div class="card has-equal-height cardbg">
           <div class="image-card">
